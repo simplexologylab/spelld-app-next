@@ -98,6 +98,7 @@ export default function Home() {
   }
 
   function handleDelete(word) {
+    console.log("boom", word)
     setWords(
       [...words].filter((w) => {
         return w !== word;
@@ -131,7 +132,13 @@ export default function Home() {
             <input value={word} onChange={(e) => setWord(e.target.value)} />
             <button onClick={() => setWords([...words, word])}>Add Word</button>
           </div>
-          <pre>{JSON.stringify(words, null, 2)}</pre>
+          {words.map(w => (
+            <div id={w}>
+              <p>{w}</p>
+              <button onClick={() => say(w)}>play</button>
+              <button onClick={() => handleDelete(w)}>delete</button>
+            </div>
+          ))}
         </div>
 
         {playing && (
