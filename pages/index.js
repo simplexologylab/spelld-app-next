@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 
-import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import styled from "styled-components";
 
@@ -182,11 +181,6 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      <Head>
-        <title>spelld</title>
-        <link rel="icon" href="/logo.png" />
-      </Head>
-
       <main className={styles.main}>
         <Header>
           <HeaderText>
