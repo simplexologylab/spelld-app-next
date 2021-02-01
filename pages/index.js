@@ -48,7 +48,8 @@ const H2 = styled.h2`
   margin: 0px;
   text-align: end;
   color: #1d6cd2;
-  font-size: 2rem;
+  font-size: 2.2rem;
+  font-family: 'Kalam';
 `
 
 const Input = styled.input`
@@ -69,6 +70,7 @@ const Row = styled.div`
 
 const Text = styled.p`
   margin: 0px;
+  font-size: 1.2rem;
 `;
 
 export default function Home() {
@@ -209,8 +211,8 @@ export default function Home() {
               <Row key={w}>
                 <Text>{w}</Text>
                 <div>
-                <Button onClick={() => say(w)}>Test</Button>
-                <Button onClick={() => handleDelete(w)}>Delete</Button>
+                <Button onClick={() => say(w)}>▶️</Button>
+                <Button onClick={() => handleDelete(w)}>🗑️</Button>
                 </div>
               </Row>
             ))}
@@ -224,7 +226,7 @@ export default function Home() {
               <Button onClick={() => handleReset()}>Reset Test</Button>
             </Box>
             {item ? (
-              <Button onClick={() => say(item.answer)}>Play Word</Button>
+              <Button onClick={() => say(item.answer)}>▶️{"  "} Play Word</Button>
             ) : (
               <p>
                 you're done! You're score is: {score} / {test.length}

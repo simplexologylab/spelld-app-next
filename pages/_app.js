@@ -23,12 +23,23 @@ function MyApp({ Component, pageProps }) {
           sizes="16x16"
         />
         <link
+          rel="preload"
+          href="/fonts/Kalam/Kalam-Regular.tff"
+          as="font"
+          crossOrigin=""
+        />
+        <link
           href="/icons/logo-32x32.png"
           rel="icon"
           type="image/png"
           sizes="32x32"
         />
         <link rel="apple-touch-icon" href="/logo.png"></link>
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap"
+          rel="stylesheet"
+        />
         <meta name="theme-color" content="#317EFB" />
         <title>Spelld</title>
         <link rel="icon" href="/logo.png" />
