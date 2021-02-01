@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import styles from "../styles/Home.module.css";
 import styled from "styled-components";
 
+import Grader from "../components/grader"
+
 const Button = styled.button`
   border: 2px solid #1d6cd2;
   border-radius: 18px;
@@ -230,6 +232,7 @@ export default function Home() {
             ) : (
               <p>
                 you're done! You're score is: {score} / {test.length}
+                <Grader score={score/test.length * 100} />
               </p>
             )}
             <form
