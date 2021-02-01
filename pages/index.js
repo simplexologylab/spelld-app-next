@@ -13,6 +13,15 @@ const Button = styled.button`
   margin: 4px;
 `;
 
+const InputButton = styled.input`
+  border: 2px solid #1d6cd2;
+  border-radius: 18px;
+  background: transparent;
+  padding: 4px 22px;
+  font-size: 1.1rem;
+  margin: 4px;
+`;
+
 const TestButton = styled(Button)`
   background: #1d6cd2;
   color: white;
@@ -65,16 +74,16 @@ const Text = styled.p`
 
 export default function Home() {
   const initialWords = [
-    "escorted",
-    "swelled",
-    "relied",
-    "reputation",
-    "worthy",
-    "churning",
-    "situation",
-    "deserve",
-    "defended",
-    "satisfied",
+    "reward",
+    "graduate",
+    "symbol",
+    "foster",
+    "disobey",
+    "confidence",
+    "patiently",
+    "confesses",
+    "ceremony",
+    "preforms",
   ];
 
   const [word, setWord] = useState("");
@@ -175,7 +184,7 @@ export default function Home() {
     <div className={styles.container}>
       <Head>
         <title>spelld</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/logo.png" />
       </Head>
 
       <main className={styles.main}>
@@ -243,7 +252,7 @@ export default function Home() {
                 autoCorrect="off"
                 spellCheck="false"
               />
-              <input type="submit" label="Submit" />
+              <InputButton type="submit" label="Submit" />
             </form>
             <p>
               Progress: {test.filter((item) => item.entered).length} /{" "}
