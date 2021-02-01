@@ -1,16 +1,56 @@
 import { useState, useEffect } from "react";
 
 import Head from "next/head";
+import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import styled from "styled-components";
 
 const Button = styled.button`
-  border: none;
-  height: 25px;
+  border: 2px solid #1d6cd2;
+  border-radius: 18px;
+  background: transparent;
+  padding: 4px 22px;
+  font-size: 1.1rem;
+  margin: 4px;
 `;
+
+const TestButton = styled(Button)`
+  background: #1d6cd2;
+  color: white;
+  align-items: center;
+  justify-item: ;
+`
 
 const Box = styled.div`
   padding: 20px;
+`;
+
+const Header = styled.div`
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+`;
+
+const HeaderText = styled.div`
+  margin: 4px;
+`
+
+const H2 = styled.h2`
+  margin: 0px;
+  text-align: end;
+  color: #1d6cd2;
+  font-size: 2rem;
+`
+
+const Input = styled.input`
+  margin: 10px;
+  padding: 11px;
+  border: 1px solid gray;
+  border-radius: 4px;
+  background: transparent;
+  font-size: 1.5rem;
 `
 
 const Row = styled.div`
@@ -119,7 +159,6 @@ export default function Home() {
   }
 
   function handleDelete(word) {
-    console.log("boom", word);
     setWords(
       [...words].filter((w) => {
         return w !== word;
@@ -141,39 +180,48 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a>spelld!</a>
-        </h1>
+        <Header>
+          <HeaderText>
+          <h3 style={{ margin: 0 }}>
+            Welcome to
+          </h3>
+          <H2>
+            spelld
+          </H2>
+          </HeaderText>
+          <Image src="/logo.png" alt="Logo" width={50} height={50} />
+        </Header>
         {!playing && (
-          <div>
-            <h2>build the Test</h2>
-            <Button onClick={() => setPlaying(!playing)}>
+          <Box>
+            <TestButton onClick={() => setPlaying(!playing)}>
               {playing ? "Stop Test" : "Start Testing"}
-            </Button>
+            </TestButton>
             <div>
-              <input value={word} onChange={(e) => setWord(e.target.value)} />
-              <button onClick={() => setWords([...words, word])}>
+              <Input value={word} onChange={(e) => setWord(e.target.value)} />
+              <Button onClick={() => setWords([...words, word])}>
                 Add Word
-              </button>
+              </Button>
             </div>
             {words.map((w) => (
               <Row key={w}>
                 <Text>{w}</Text>
-                <Button onClick={() => say(w)}>play</Button>
-                <Button onClick={() => handleDelete(w)}>delete</Button>
+                <div>
+                <Button onClick={() => say(w)}>Test</Button>
+                <Button onClick={() => handleDelete(w)}>Delete</Button>
+                </div>
               </Row>
             ))}
-          </div>
+          </Box>
         )}
 
         {playing && (
           <div>
             <Box>
-              <button onClick={() => setPlaying(false)}>Stop Test</button>
-              <button onClick={() => handleReset()}>Reset Test</button>
+              <TestButton onClick={() => setPlaying(false)}>Stop Test</TestButton>
+              <Button onClick={() => handleReset()}>Reset Test</Button>
             </Box>
             {item ? (
-              <button onClick={() => say(item.answer)}>Play Word</button>
+              <Button onClick={() => say(item.answer)}>Play Word</Button>
             ) : (
               <p>
                 you're done! You're score is: {score} / {test.length}
@@ -186,7 +234,7 @@ export default function Home() {
               autoCorrect="off"
               spellCheck="false"
             >
-              <input
+              <Input
                 type="text"
                 value={entered}
                 name="studentAnswer"
