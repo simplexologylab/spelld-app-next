@@ -1,8 +1,8 @@
 {
     "name": "Spelld",
     "short_name": "Spelld",
-    "theme_color": "#ffffff",
-    "background_color": "#004740",
+    "theme_color": "#1d6cd2",
+    "background_color": "#1d6cd2",
     "display": "fullscreen",
     "orientation": "portrait",
     "scope": "/",

@@ -161,7 +161,7 @@ export default function Home() {
   }
 
   function handleReset() {
-    setTest(buildTest);
+    setWords(initialWords);
     setDone(false);
   }
 
@@ -198,6 +198,7 @@ export default function Home() {
             <TestButton onClick={() => setPlaying(!playing)}>
               {playing ? "Stop Test" : "Start Testing"}
             </TestButton>
+            <Button onClick={() => handleReset()}>Reset</Button>
             <div>
               <Input value={word} onChange={(e) => setWord(e.target.value)} />
               <Button onClick={() => setWords([...words, word])}>
