@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 
 import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import styled from "styled-components";
 
@@ -189,7 +188,7 @@ export default function Home() {
             spelld
           </H2>
           </HeaderText>
-          <Image src="/logo.png" alt="Logo" width={50} height={50} />
+          <img src="/logo.png" alt="Logo" width={50} height={50} />
         </Header>
         {!playing && (
           <Box>
