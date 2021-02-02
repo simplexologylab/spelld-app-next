@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import styles from "../styles/Home.module.css";
 import styled from "styled-components";
 
-import Grader from "../components/grader"
+import Grader from "../components/grader";
 
 const Button = styled.button`
   border: 2px solid #1d6cd2;
@@ -28,7 +28,7 @@ const TestButton = styled(Button)`
   color: white;
   align-items: center;
   justify-item: ;
-`
+`;
 
 const Box = styled.div`
   padding: 20px;
@@ -44,15 +44,15 @@ const Header = styled.div`
 
 const HeaderText = styled.div`
   margin: 4px;
-`
+`;
 
 const H2 = styled.h2`
   margin: 0px;
   text-align: end;
   color: #1d6cd2;
   font-size: 2.2rem;
-  font-family: 'Kalam';
-`
+  font-family: "Kalam";
+`;
 
 const Input = styled.input`
   margin: 10px;
@@ -61,7 +61,7 @@ const Input = styled.input`
   border-radius: 4px;
   background: transparent;
   font-size: 1.5rem;
-`
+`;
 
 const Row = styled.div`
   display: flex;
@@ -188,12 +188,8 @@ export default function Home() {
       <main className={styles.main}>
         <Header>
           <HeaderText>
-          <h3 style={{ margin: 0 }}>
-            Welcome to
-          </h3>
-          <H2>
-            spelld
-          </H2>
+            <h3 style={{ margin: 0 }}>Welcome to</h3>
+            <H2>spelld</H2>
           </HeaderText>
           <img src="/logo.png" alt="Logo" width={50} height={50} />
         </Header>
@@ -213,8 +209,8 @@ export default function Home() {
               <Row key={w}>
                 <Text>{w}</Text>
                 <div>
-                <Button onClick={() => say(w)}>▶️</Button>
-                <Button onClick={() => handleDelete(w)}>🗑️</Button>
+                  <Button onClick={() => say(w)}>▶️</Button>
+                  <Button onClick={() => handleDelete(w)}>🗑️</Button>
                 </div>
               </Row>
             ))}
@@ -224,41 +220,49 @@ export default function Home() {
         {playing && (
           <div>
             <Box>
-              <TestButton onClick={() => setPlaying(false)}>Stop Test</TestButton>
+              <TestButton onClick={() => setPlaying(false)}>
+                Stop Test
+              </TestButton>
               <Button onClick={() => handleReset()}>Reset Test</Button>
             </Box>
             {item ? (
-              <Button onClick={() => say(item.answer)}>▶️{"  "} Play Word</Button>
+              <>
+                <Button onClick={() => say(item.answer)}>
+                  ▶️{"  "} Play Word
+                </Button>
+
+                <form
+                  onSubmit={(e) => handleUpdate(e, item.key)}
+                  autoCapitalize="off"
+                  autoComplete="off"
+                  autoCorrect="off"
+                  spellCheck="false"
+                >
+                  <Input
+                    type="text"
+                    value={entered}
+                    name="studentAnswer"
+                    onChange={(e) => setEntered(e.target.value)}
+                    autoCapitalize="off"
+                    autoComplete="off"
+                    autoCorrect="off"
+                    spellCheck="false"
+                  />
+                  <InputButton type="submit" label="Submit" />
+                </form>
+                <p>
+                  Progress: {test.filter((item) => item.entered).length} /{" "}
+                  {test.length}
+                </p>
+              </>
             ) : (
               <p>
-                you're done! You're score is: {score} / {test.length}
-                <Grader score={score/test.length * 100} />
+                You're done! You're score is: {score} / {test.length}
+                <Grader score={(score / test.length) * 100} />
+                <pre>{JSON.stringify(test, null, 2)}</pre>
               </p>
             )}
-            <form
-              onSubmit={(e) => handleUpdate(e, item.key)}
-              autoCapitalize="off"
-              autoComplete="off"
-              autoCorrect="off"
-              spellCheck="false"
-            >
-              <Input
-                type="text"
-                value={entered}
-                name="studentAnswer"
-                onChange={(e) => setEntered(e.target.value)}
-                autoCapitalize="off"
-                autoComplete="off"
-                autoCorrect="off"
-                spellCheck="false"
-              />
-              <InputButton type="submit" label="Submit" />
-            </form>
-            <p>
-              Progress: {test.filter((item) => item.entered).length} /{" "}
-              {test.length}
-            </p>
-            {done && <pre>{JSON.stringify(test, null, 2)}</pre>}
+
           </div>
         )}
       </main>

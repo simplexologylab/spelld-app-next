@@ -23,12 +23,6 @@ function MyApp({ Component, pageProps }) {
           sizes="16x16"
         />
         <link
-          rel="preload"
-          href="/fonts/Kalam/Kalam-Regular.tff"
-          as="font"
-          crossOrigin=""
-        />
-        <link
           href="/icons/logo-32x32.png"
           rel="icon"
           type="image/png"
