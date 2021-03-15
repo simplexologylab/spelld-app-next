@@ -77,16 +77,16 @@ const Text = styled.p`
 
 export default function Home() {
   const initialWords = [
-    "acquire",
-    "unfortunate",
-    "coerce",
-    "boasted",
-    "beamed",
-    "glared",
-    "ceased",
-    "declared",
-    "devised",
-    "resourceful",
+    "display",
+    "alert",
+    "weariness",
+    "fractured",
+    "standards",
+    "vision",
+    "huddle",
+    "graceful",
+    "stranded",
+    "concluded",
   ];
 
   const [word, setWord] = useState("");
